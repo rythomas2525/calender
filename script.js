@@ -1,8 +1,41 @@
 $(document).ready(function () {
 
-    $(".saveBtn").on("click", function () {
-        console.log("you clicked a button")
+
+
+    function renderLastRegistered() {
+        var description = localStorage.getItem(".description");
+
+
+        if (description === null) {
+            return;
+        }
+
+
+    }
+
+
+    $(".saveBtn").click(function (event) {
+
+        var description = $(this).prev().val()
+        console.log(this)
+        console.log(description)
+        event.preventDefault();
+
+
+        if (description === "") {
+            displayMessage("error empty");
+        }
+        else {
+
+
+            localStorage.setItem("description", description);
+
+            renderLastRegistered();
+        }
+
+
     })
+
 
 
     function hoursUpdater() {
