@@ -3,12 +3,15 @@ $(document).ready(function () {
 
 
     function renderLastRegistered() {
-        var description = localStorage.getItem(".description");
+        // var description = localStorage.getItem(".description");
+        var description = $(this).prev().val()
 
 
         if (description === null) {
             return;
         }
+
+        $(".description").textContent = description
 
 
     }
