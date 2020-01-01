@@ -1,27 +1,20 @@
 $(document).ready(function () {
 
 
+    // this will pull from local storage
+    $(".saveBtn").each(function () {
+        var item = localStorage.getItem("description" + $(this).data("number"))
+        $(this).prev().val(item)
+    })
 
-    function renderLastRegistered() {
-        // var description = localStorage.getItem(".description");
-        var description = $(this).prev().val()
-
-
-        if (description === null) {
-            return;
-        }
-
-        $(".description").textContent = description
-
-
-    }
 
 
     $(".saveBtn").click(function (event) {
 
+
         var description = $(this).prev().val()
-        console.log(this)
-        console.log(description)
+        var dataNumber = $(this).data("number")
+        console.log(dataNumber)
         event.preventDefault();
 
 
@@ -31,9 +24,9 @@ $(document).ready(function () {
         else {
 
 
-            localStorage.setItem("description", description);
-
-            renderLastRegistered();
+            localStorage.setItem("description" + $(this).data("number"), description);
+            // localStorage.getItem("description", description)
+            // renderLastRegistered();
         }
 
 
